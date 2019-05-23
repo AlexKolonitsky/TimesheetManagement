@@ -1,55 +1,79 @@
 package app.dao.impl;
 
+import app.dao.BasicCrudDao;
 import app.dao.LogsDao;
+import app.entities.Assignment;
 import app.entities.Logs;
 import app.entities.namespace.LogsNamespace;
 import app.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+
+import java.util.*;
 
 @Repository
-public class LogsDaoImpl implements LogsDao {
+@Transactional
+public class LogsDaoImpl implements BasicCrudDao<Logs>, LogsDao {
 
-    private static List<Logs> logsList = new LinkedList<>();
-
-    @Override
-    public synchronized List<Logs> getLogFor(LogsNamespace logsNamespace) {
-        Date boundaryDate = logsNamespace.getBoundaryDate();
-        LinkedList<Logs> resultLogsList = new LinkedList<>();
-
-        ListIterator<Logs> logsIterator
-                = logsList.listIterator(logsList.size());
-        Logs previous;
-        while (logsIterator.hasPrevious()) {
-            previous = logsIterator.previous();
-            if (previous.getDate().before(boundaryDate)) {
-                break;
-            }
-            resultLogsList.add(previous);
-        }
-        return resultLogsList;
-    }
+    @Autowired
+    private SessionFactory sessionFactory;
 
     @Override
-    public synchronized List<Logs> getAll() {
-        return logsList;
-    }
-
-    @Override
-    public synchronized void save(Logs logs) {
-        logsList.add(logs);
-    }
-
-    @Override
-    public synchronized void delete(Logs retiringLogs) {
-        if (!logsList.contains(retiringLogs)) {
+    public Logs findById(int id) {
+        Logs logs = sessionFactory.getCurrentSession()
+                .get(Logs.class, id);
+        if (logs == null) {
             throw new EntityNotFoundException();
         }
-        logsList.remove(retiringLogs);
+        return logs;
+    }
+
+    @Override
+    public List<Logs> findAll() {
+        Query query
+                = sessionFactory.getCurrentSession()
+                .createQuery("from Logs");
+        return query.getResultList();
+    }
+
+    @Override
+    public void deleteById(int id) {
+        sessionFactory.getCurrentSession()
+                .delete(findById(id));
+    }
+
+    @Override
+    public void create(Logs entity) {
+        sessionFactory.getCurrentSession()
+                .save(entity);
+    }
+
+    @Override
+    public void delete(Logs entity) {
+        sessionFactory.getCurrentSession()
+                .delete(entity);
+    }
+
+    @Override
+    public void update(Logs entity) {
+        sessionFactory.getCurrentSession()
+                .update(entity);
+    }
+
+    @Override
+    public List<Logs> getLogsByAssignmentId(List<Assignment> assignmentList) {
+        List<Integer> logsIds = new ArrayList<>();
+        for(Assignment assignment : assignmentList) {
+            logsIds.add(assignment.getId());
+        }
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("from Logs where assignmentId in " + logsIds.toArray());
+        return query.getResultList();
     }
 
 }

@@ -28,7 +28,7 @@ public class DaoConfig {
     }
 
     @Bean
-    public ProjectDao getProjectDao() {
+    public ProjectDaoImpl getProjectDao() {
         return new ProjectDaoImpl();
     }
 

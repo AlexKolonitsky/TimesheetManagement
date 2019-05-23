@@ -1,19 +1,13 @@
 package app.dao;
 
 import app.entities.Logs;
-import app.entities.namespace.LogsNamespace;
+import app.entities.Assignment;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface LogsDao {
+public interface LogsDao extends BasicCrudDao<Logs> {
 
-    List<Logs> getLogFor(LogsNamespace logsNamespace);
-
-    List<Logs> getAll();
-
-    void save(Logs logs);
-
-    void delete(Logs logs);
+    List<Logs> getLogsByAssignmentId(List<Assignment> assignmentList);
 }

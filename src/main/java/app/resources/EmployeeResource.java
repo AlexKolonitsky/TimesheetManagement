@@ -1,14 +1,20 @@
 package app.resources;
 
-import app.dao.EmployeeDao;
-import app.dao.ProjectDao;
+
+import app.dao.impl.AssignmentDaoImpl;
+import app.dao.impl.EmployeeDaoImpl;
+import app.dao.impl.LogsDaoImpl;
+import app.dao.impl.ProjectDaoImpl;
+import app.entities.Assignment;
 import app.entities.Employee;
+import app.entities.EmployeeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -16,12 +22,19 @@ import java.util.List;
 public class EmployeeResource {
 
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeDaoImpl employeeDao;
+
     @Autowired
-    private ProjectDao projectDao;
+    private ProjectDaoImpl projectDao;
+
+    @Autowired
+    private LogsDaoImpl logsDao;
+
+    @Autowired
+    private AssignmentDaoImpl assignmentDao;
 
     @GET
-    @Path("/all")
+    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Employee> getAll() {
         return employeeDao.getAll();
@@ -30,12 +43,19 @@ public class EmployeeResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Employee get(@PathParam("id") int id) {
-        return employeeDao.findById(id);
+    public EmployeeResponse get(@PathParam("id") int id) {
+        EmployeeResponse response = new EmployeeResponse();
+        response.setEmployee(employeeDao.findById(id));
+        List<Assignment> assignmentList = assignmentDao.getEmployeeProjects(id);
+        response.setAssignments(assignmentList);
+        response.setLogs(logsDao.findAll());
+        response.setProjects(projectDao.findAll());
+
+        return response;
     }
 
     @POST
-    @Path("/add")
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response add(Employee employee) {
         employeeDao.save(employee);
@@ -43,7 +63,7 @@ public class EmployeeResource {
     }
 
     @PUT
-    @Path("/edit/{id}")
+    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response edit(@PathParam("id") int id, Employee employee) {
         employeeDao.edit(employee);
@@ -51,7 +71,7 @@ public class EmployeeResource {
     }
 
     @DELETE
-    @Path("/delete/{id}")
+    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") int id) {
         employeeDao.delete(id);

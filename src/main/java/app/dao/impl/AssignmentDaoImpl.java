@@ -1,5 +1,6 @@
 package app.dao.impl;
 
+import app.dao.AssignmentDao;
 import app.dao.BasicCrudDao;
 import app.entities.Assignment;
 import app.exceptions.EntityNotFoundException;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class AssignmentDaoImpl implements BasicCrudDao<Assignment> {
+public class AssignmentDaoImpl implements BasicCrudDao<Assignment>, AssignmentDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -58,5 +59,13 @@ public class AssignmentDaoImpl implements BasicCrudDao<Assignment> {
     public void update(Assignment entity) {
         sessionFactory.getCurrentSession()
                 .update(entity);
+    }
+
+    @Override
+    public List<Assignment> getEmployeeProjects(int Id) {
+        Query query
+                = sessionFactory.getCurrentSession()
+                .createQuery("from Assignment where employeeId = " + Id);
+        return query.getResultList();
     }
 }

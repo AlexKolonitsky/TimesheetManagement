@@ -23,35 +23,35 @@ public class LogsResource {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Logs> getAll() {
-        return logsDao.getAll();
+        return logsDao.findAll();
     }
 
-    @GET
-    @Path("/get/today")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Logs> getForToday() {
-        return logsDao.getLogFor(LogsNamespace.TODAY);
-    }
+//    @GET
+//    @Path("/get/today")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public List<Logs> getForToday() {
+//        return logsDao.getLogFor(LogsNamespace.TODAY);
+//    }
 
-    @GET
-    @Path("/get/week")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Logs> getForThisWeek() {
-        return logsDao.getLogFor(LogsNamespace.THIS_WEEK);
-    }
+//    @GET
+//    @Path("/get/week")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public List<Logs> getForThisWeek() {
+//        return logsDao.getLogFor(LogsNamespace.THIS_WEEK);
+//    }
 
-    @GET
-    @Path("/get/month")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Logs> getForThisMonth() {
-        return logsDao.getLogFor(LogsNamespace.THIS_MONTH);
-    }
+//    @GET
+//    @Path("/get/month")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public List<Logs> getForThisMonth() {
+//        return logsDao.getLogFor(LogsNamespace.THIS_MONTH);
+//    }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response add(Logs logs) {
-        logsDao.save(logs);
+        logsDao.create(logs);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
