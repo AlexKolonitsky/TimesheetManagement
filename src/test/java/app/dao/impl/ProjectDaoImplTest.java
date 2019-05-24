@@ -108,6 +108,14 @@ public class ProjectDaoImplTest {
         Assert.assertEquals(expectedTitleOfProject, project.getName());
     }
 
+    public static Date parseDate(String date) {
+        try {
+            return new SimpleDateFormat("yyyy-mm-dd").parse(date);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
     @Test
     public void updateTest() throws SQLException, FileNotFoundException, DatabaseUnitException {
         Date startDate = parseDate("2019-01-19");
@@ -116,14 +124,6 @@ public class ProjectDaoImplTest {
         IDataSet actualData = connection.createDataSet();
         IDataSet expectedData = new FlatXmlDataSetBuilder().build(new FileInputStream("D:\\Alena\\J2EE_projects\\TimesheetManagement\\src\\test\\resources\\app\\dao\\impl\\projectDataSet\\updateDb.xml"));
         Assertion.assertEquals(expectedData, actualData);
-    }
-
-    public static Date parseDate(String date) {
-        try {
-            return new SimpleDateFormat("yyyy-mm-dd").parse(date);
-        } catch (ParseException e) {
-            return null;
-        }
     }
 
     @Test

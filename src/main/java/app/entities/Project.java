@@ -1,18 +1,15 @@
 package app.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Project")
 public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int companyId;
     private String name;

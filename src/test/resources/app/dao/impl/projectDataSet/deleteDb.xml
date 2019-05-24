@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <project id="1" companyId="11" name="project_1" logoUrl="logo1" startDate="2018-12-19" endDate="2019-12-19"
-             manHours="10" code="001" color="white" description="description1"/>
+    <project id="1" companyId="11" name="project_1" logoUrl="logo1" startDate="2018-12-19" endDate="2019-12-19" manHours="10" code="001" color="white" description="description1"/>
 </dataset>
