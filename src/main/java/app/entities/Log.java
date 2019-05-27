@@ -14,28 +14,28 @@ public class Log {
     private int id;
     private int assignmentId;
     private double time;
-    private int order;
+    private int orderId;
     private String comment;
     private Date date;
 
     public Log() {
     }
 
-    public Log(int id, int assignmentId, double time, int order,
+    public Log(int id, int assignmentId, double time, int orderId,
                String comment, Date date) {
         this.id = id;
         this.assignmentId = assignmentId;
         this.time = time;
-        this.order = order;
+        this.orderId = orderId;
         this.comment = comment;
         this.date = date;
     }
 
-    public Log(int assignmentId, double time, int order,
+    public Log(int assignmentId, double time, int orderId,
                String comment, Date date) {
         this.assignmentId = assignmentId;
         this.time = time;
-        this.order = order;
+        this.orderId = orderId;
         this.comment = comment;
         this.date = date;
     }
@@ -64,12 +64,12 @@ public class Log {
         this.time = time;
     }
 
-    public int getOrder() {
-        return order;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrder(int order) {
-        this.order = order;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getComment() {
@@ -100,21 +100,21 @@ public class Log {
         return id == logs.id &&
                 assignmentId == logs.assignmentId &&
                 Double.compare(logs.time, time) == 0 &&
-                order == logs.order &&
+                orderId == logs.orderId &&
                 Objects.equals(comment, logs.comment) &&
                 Objects.equals(date, logs.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, assignmentId, time, order, comment, date);
+        return Objects.hash(id, assignmentId, time, orderId, comment, date);
     }
 
     @Override
     public String toString() {
         return "Log{"
                 + "assignmentId: " + assignmentId + ';'
-                + "order: " + order + ';'
+                + "orderId: " + orderId + ';'
                 + " time: " + time + ';'
                 + "comment: '" + comment + '\''
                 + " Date: " + date + ';'

@@ -12,8 +12,9 @@ public class Employee {
     @Id
     private int id;
     private String name;
-    private String photo;
+    private String photoUrl;
     private String email;
+    private String phone;
 
     @ElementCollection
     @CollectionTable(name = "Project")
@@ -22,22 +23,31 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String name, String photo, String email) {
+    public Employee(int id, String name, String photoUrl, String email, String phone) {
         this.id = id;
         this.name = name;
-        this.photo = photo;
+        this.photoUrl = photoUrl;
         this.email = email;
+        this.phone = phone;
     }
-
     public Employee(Employee employee) {
         this(employee.getId(),
                 employee.getName(),
-                employee.getPhoto(),
-                employee.getEmail());
+                employee.getPhotoUrl(),
+                employee.getEmail(),
+	            employee.getPhone());
         this.projects = employee.getProjects();
     }
 
-    public int getId() {
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public int getId() {
         return id;
     }
 
@@ -45,8 +55,8 @@ public class Employee {
         return name;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 
     public String getEmail() {
@@ -65,8 +75,8 @@ public class Employee {
         this.name = name;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public void setEmail(String email) {
@@ -88,14 +98,14 @@ public class Employee {
         Employee employee = (Employee) object;
         return id == employee.id
                 && Objects.equals(name, employee.name)
-                && Objects.equals(photo, employee.photo)
+                && Objects.equals(photoUrl, employee.photoUrl)
                 && Objects.equals(email, employee.email)
                 && Objects.equals(projects, employee.projects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, photo, email, projects);
+        return Objects.hash(id, name, photoUrl, email, projects);
     }
 
     @Override
@@ -103,7 +113,7 @@ public class Employee {
         return "Employee{"
                 + "id=" + id
                 + ", name='" + name + '\''
-                + ", photo='" + photo + '\''
+                + ", photoUrl='" + photoUrl + '\''
                 + ", email='" + email + '\''
                 + '\n'
                 + ", projects=" + projects

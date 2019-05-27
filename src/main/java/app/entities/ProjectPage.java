@@ -1,70 +1,40 @@
 package app.entities;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.JoinColumn;
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class ProjectPage {
-    private String projectColor;
-    private String projectName;
-    private String projectCode;
-    @ElementCollection
-    @CollectionTable(name = "Employee", joinColumns = @JoinColumn(name = "Project"))
-    private List<Employee> team;
-    private Date projectStartDate;
-    private long projectLoading;
+
+    private int companyId;
+    private Map<Project, List<Employee>> team;
+    private Map<Project, Double> projectLoading;
+
 
     public ProjectPage() {
     }
 
-    public String getProjectColor() {
-        return projectColor;
-    }
-
-    public void setProjectColor(String projectColor) {
-        this.projectColor = projectColor;
-    }
-
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    public String getProjectCode() {
-        return projectCode;
-    }
-
-    public void setProjectCode(String projectCode) {
-        this.projectCode = projectCode;
-    }
-
-    public List<Employee> getTeam() {
-        return team;
-    }
-
-    public void setTeam(List<Employee> team) {
-        this.team = team;
-    }
-
-    public Date getProjectStartDate() {
-        return projectStartDate;
-    }
-
-    public void setProjectStartDate(Date projectStartDate) {
-        this.projectStartDate = projectStartDate;
-    }
-
-    public long getProjectLoading() {
+    public Map<Project, Double> getProjectLoading() {
         return projectLoading;
     }
 
-    public void setProjectLoading(long projectLoading) {
+    public void setProjectLoading(Map<Project, Double> projectLoading) {
         this.projectLoading = projectLoading;
+    }
+
+    public Map<Project, List<Employee>> getTeam() {
+        return team;
+    }
+
+    public void setTeam(Map<Project, List<Employee>> team) {
+        this.team = team;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
     }
 }
 

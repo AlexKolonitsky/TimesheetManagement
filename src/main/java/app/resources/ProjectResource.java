@@ -1,6 +1,5 @@
 package app.resources;
 
-import app.dao.BasicCrudDao;
 import app.dao.ProjectDao;
 import app.entities.Project;
 import app.entities.ProjectPage;
@@ -24,8 +23,6 @@ import java.util.List;
 public class ProjectResource {
 
     @Autowired
-    private BasicCrudDao<Project> projectBasicCrudDao;
-    @Autowired
     private ProjectDao projectPageDao;
 
     @GET
@@ -38,14 +35,14 @@ public class ProjectResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Project> findAll() {
-        return projectBasicCrudDao.findAll();
+        return projectPageDao.findAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Project findById(@PathParam("id") int id) {
-        return projectBasicCrudDao.findById(id);
+        return projectPageDao.findById(id);
     }
 
     @PUT
@@ -56,14 +53,14 @@ public class ProjectResource {
             return Response.status(Response.Status.CONFLICT.getStatusCode())
                     .build();
         }
-        projectBasicCrudDao.update(project);
+        projectPageDao.update(project);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Project project) {
-        projectBasicCrudDao.create(project);
+        projectPageDao.create(project);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -71,7 +68,7 @@ public class ProjectResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteById(@PathParam("id") int id) {
-        projectBasicCrudDao.deleteById(id);
+        projectPageDao.deleteById(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 }
