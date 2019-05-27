@@ -1,0 +1,178 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="default_db_data" author="Yuri Dolgushev" runAlways="true">
+        <sql>
+            insert into Timesheetmanager.Users
+            (id, name, phone, email, photoUrl)
+            values (1, 'Marinka Mandarinka', '+375256660110',
+            'MEmail', 'MUrl')
+            on duplicate key update
+            name = 'Marinka Mandarinka',
+            phone = '+375256660110',
+            email = 'MEmail',
+            photoUrl = 'MUrl';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Users
+            (id, name, phone, email, photoUrl)
+            values (2, 'Alinka Apelsinka', '+375257770110',
+            'AEmail', 'AUrl')
+            on duplicate key update
+            name = 'Alinka Apelsinka',
+            phone = '+375257770110',
+            email = 'AEmail',
+            photoUrl = 'AUrl';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Users
+            (id, name, phone, email, photoUrl)
+            values (3, 'Sponge Bob', '+375255550110',
+            'BEmail', 'BUrl')
+            on duplicate key update
+            name = 'Sponge Bob',
+            phone = '+375255550110',
+            email = 'BEmail',
+            photoUrl = 'BUrl';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Roles
+            (code, name)
+            values (1, 'Manager')
+            on duplicate key update
+            name = 'Manager';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Roles
+            (code, name)
+            values (2, 'Developer')
+            on duplicate key update
+            name = 'Developer';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Companies
+            (id, name, logo, ownerId)
+            values (1, 'Fruitsoft', 'FSLogoUrl', 3)
+            on duplicate key update
+            name = 'Fruitsoft',
+            logo = 'FSLogoUrl',
+            ownerId = 3;
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Employees
+            (id, companyId, employeeId, roleId, workload, status)
+            values (1, 1, 3, 1, 1000, 'active')
+            on duplicate key update
+            companyId = 1,
+            employeeId = 3,
+            roleId = 1,
+            workload = 1000,
+            status = 'active';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Employees
+            (id, companyId, employeeId, roleId, workload, status)
+            values (2, 1, 1, 2, 1500, 'active')
+            on duplicate key update
+            companyId = 1,
+            employeeId = 1,
+            roleId = 2,
+            workload = 1500,
+            status = 'active';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Employees
+            (id, companyId, employeeId, roleId, workload, status)
+            values (3, 1, 2, 2, 1800, 'active')
+            on duplicate key update
+            companyId = 1,
+            employeeId = 2,
+            roleId = 2,
+            workload = 1800,
+            status = 'active';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Projects
+            (id, companyId, name, logoUrl, startDate, endDate,
+            manHours, code, color, description)
+            values (1, 1, 'Purple Hat', 'PHUrl', '2018-05-01',
+            '2019-09-01', 10000, 111, 'purple', 'so cool...')
+            on duplicate key update
+            companyId = 1,
+            name = 'Purple Hat',
+            logoUrl = 'PHUrl',
+            startDate = '2018-05-01',
+            endDate = '2019-09-01',
+            manHours = 10000,
+            code = 111,
+            color = 'purple',
+            description = 'so cool...';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Projects
+            (id, companyId, name, logoUrl, startDate, endDate,
+            manHours, code, color, description)
+            values (2, 1, 'Warm-and-Cold Stone', 'SUrl', '2018-09-01',
+            '2020-10-01', 20000, 112, 'red', 'awesome project')
+            on duplicate key update
+            companyId = 1,
+            name = 'Warm-and-Cold Stone',
+            logoUrl = 'SUrl',
+            startDate = '2018-09-01',
+            endDate = '2020-10-01',
+            manHours = 20000,
+            code = 112,
+            color = 'red',
+            description = 'awesome project';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Activity
+            (id, name)
+            values (1, 'Senior JSON developer')
+            on duplicate key update
+            name = 'Senior JSON developer';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Activity
+            (id, name)
+            values (2, 'Senior Bugs developer')
+            on duplicate key update
+            name = 'Senior Bugs developer';
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Assignments
+            (id, employeeId, projectId, activityId, workLoad)
+            values (1, 3, 2, 2, 200)
+            on duplicate key update
+            employeeId = 3,
+            projectId = 2,
+            activityId = 2,
+            workLoad = 200;
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Assignments
+            (id, employeeId, projectId, activityId, workLoad)
+            values (2, 1, 2, 1, 300)
+            on duplicate key update
+            employeeId = 1,
+            projectId = 2,
+            activityId = 1,
+            workLoad = 300;
+        </sql>
+        <sql>
+            insert into Timesheetmanager.Assignments
+            (id, employeeId, projectId, activityId, workLoad)
+            values (3, 2, 1, 1, 400)
+            on duplicate key update
+            employeeId = 2,
+            projectId = 1,
+            activityId = 1,
+            workLoad = 400;
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

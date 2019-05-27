@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Integration")
+@Table(name = "Integrations")
 public class Integration {
 
     @Id

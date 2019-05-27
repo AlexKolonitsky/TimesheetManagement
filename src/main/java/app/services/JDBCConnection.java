@@ -16,7 +16,7 @@ public class JDBCConnection {
     private String driver;
 
     @Value("${db.url}")
-    private String URL;
+    private String url;
 
     @Value("${db.username}")
     private String username;
@@ -28,7 +28,7 @@ public class JDBCConnection {
     public Connection getConnection() {
         try {
             Class.forName(driver);
-            connection = DriverManager.getConnection(URL, username, password);
+            connection = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

@@ -31,4 +31,85 @@
             </createTable>
         </rollback>
     </changeSet>
+
+    <changeSet id="3" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Users"
+                     oldTableName="Employee"/>
+    </changeSet>
+
+    <changeSet id="4" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Employees"
+                     oldTableName="Partner"/>
+    </changeSet>
+
+    <changeSet id="5" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName= "Activities"
+                     oldTableName= "Activity"/>
+    </changeSet>
+
+    <changeSet id="6" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Assignments"
+                     oldTableName="Assignment"/>
+    </changeSet>
+
+    <changeSet id="7" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Companies"
+                     oldTableName="Company"/>
+    </changeSet>
+
+    <changeSet id="8" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Integrations"
+                     oldTableName="Integration"/>
+    </changeSet>
+
+
+    <changeSet id="9" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Notifications"
+                     oldTableName="Notification"/>
+    </changeSet>
+
+    <changeSet id="10" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Periods"
+                     oldTableName="Period"/>
+    </changeSet>
+
+    <changeSet id="11" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Projects"
+                     oldTableName="Project"/>
+    </changeSet>
+
+    <changeSet id="12" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Roles"
+                     oldTableName="Role"/>
+    </changeSet>
+
+    <changeSet id="13" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Settings"
+                     oldTableName="Setting"/>
+    </changeSet>
+
+    <changeSet id="14" author="Igor_Kraskovski">
+        <renameTable catalogName="Timesheetmanager"
+                     newTableName="Timesheets"
+                     oldTableName="Timesheet"/>
+    </changeSet>
+
+    <changeSet id="15" author="Igor_Kraskovski">
+        <modifyDataType catalogName="Timesheetmanager"
+                        columnName="TimesheetJson"
+                        newDataType="varchar(250)"
+                        tableName="Timesheets"/>
+    </changeSet>
+
 </databaseChangeLog>

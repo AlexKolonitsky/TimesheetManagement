@@ -4,9 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
-@Table(name = "project")
+@Table(name = "Projects")
 public class Project {
     @Id
     private int id;
@@ -166,17 +167,9 @@ public class Project {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (int) manHours;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (logoUrl != null ? logoUrl.hashCode() : 0);
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
-        result = 31 * result + (code != null ? code.hashCode() : 0);
-        result = 31 * result + (color != null ? color.hashCode() : 0);
-        result = 31 * result + (description != null
-                ? description.hashCode() : 0);
-        return result;
+        return Objects.hash(getId(), getManHours(), getName(), getLogoUrl(),
+                getStartDate(), getEndDate(), getCode(), getColor(),
+                getDescription());
     }
 
     @Override

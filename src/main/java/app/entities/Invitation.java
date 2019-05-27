@@ -80,13 +80,13 @@ public class Invitation {
 
     @Override
     public String toString() {
-        return "Invitation{" +
-                "id=" + id +
-                ", partnerId=" + partnerId +
-                ", code='" + code + '\'' +
-                ", dateEnd=" + dateEnd +
-                ", status='" + status + '\'' +
-                '}';
+        return "Invitation{"
+                + "id=" + id
+                + ", partnerId=" + partnerId
+                + ", code='" + code + '\''
+                + ", dateEnd=" + dateEnd
+                + ", status='" + status + '\''
+                + '}';
     }
 
     @Override
@@ -117,11 +117,7 @@ public class Invitation {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + partnerId;
-        result = 31 * result + (code != null ? code.hashCode() : 0);
-        result = 31 * result + (dateEnd != null ? dateEnd.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        return result;
+        return Objects.hash(getId(), getPartnerId(), getCode(),
+                getDateEnd(), getStatus());
     }
 }

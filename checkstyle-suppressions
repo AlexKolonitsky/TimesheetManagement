@@ -11,4 +11,5 @@
     <suppress checks="FinalParametersCheck" files="."/>
     <suppress checks="HiddenFieldCheck" files="."/>
     <suppress checks="AvoidInlineConditionalsCheck" files="."/>
+    <suppress checks="ParameterNumberCheck" files="Project.java"/>
 </suppressions>

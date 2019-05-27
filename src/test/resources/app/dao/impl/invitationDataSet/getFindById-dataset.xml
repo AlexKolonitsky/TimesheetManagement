@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+    <Invitations id="1" partnerId="3" code="Hello 1" dateEnd="2019-04-02" status="Ok"/>
+</dataset>

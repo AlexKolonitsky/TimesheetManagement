@@ -22,7 +22,7 @@ import java.util.List;
 @Path("/company")
 public class CompanyResource {
 
-    private static final Logger log = Logger.getLogger(CompanyResource.class);
+    private static final Logger LOG = Logger.getLogger(CompanyResource.class);
 
     @Autowired
     private BasicCrudDao<Company> companyDao;
@@ -31,7 +31,7 @@ public class CompanyResource {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Company> findAll() {
-        log.warn("getAll method called");
+        LOG.warn("getAll method called");
         return companyDao.findAll();
     }
 

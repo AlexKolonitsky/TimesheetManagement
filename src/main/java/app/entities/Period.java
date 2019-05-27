@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "period")
+@Table(name = "Periods")
 public class Period {
 
     @Id
@@ -52,10 +52,10 @@ public class Period {
 
     @Override
     public String toString() {
-        return "Period{" +
-                "id=" + id +
-                ", from=" + from +
-                ", to=" + to +
-                '}';
+        return "Period{"
+                + "id=" + id
+                + ", from=" + from
+                + ", to=" + to
+                + '}';
     }
 }

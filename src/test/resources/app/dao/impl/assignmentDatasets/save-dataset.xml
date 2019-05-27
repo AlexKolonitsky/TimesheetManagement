@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+    <Assignments id="4" projectId="2" employeeId="1" activityId = "1" workLoad="4500"/>
+    <Assignments id="5" projectId="5" employeeId="1" activityId = "1" workLoad="5500"/>
+    <Assignments id="6" projectId="5" employeeId="1" activityId = "5" workLoad="10000"/>
+</dataset>

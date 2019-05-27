@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class ProjectVersionService {
 
     @Value("${version}")
-    String version;
+    private String version;
 
     public ProjectVersion getProjectVersion() {
         return new ProjectVersion(version);

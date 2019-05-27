@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 public class BasicCrudDaoImpl<T> implements BasicCrudDao<T> {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     private Class<? extends T> daoType;
 
@@ -38,7 +38,8 @@ public class BasicCrudDaoImpl<T> implements BasicCrudDao<T> {
 
     @Override
     public List<T> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("from " + daoType.getName()).getResultList();
+        return sessionFactory.getCurrentSession()
+                .createQuery("from " + daoType.getName()).getResultList();
     }
 
     @Override
@@ -61,5 +62,14 @@ public class BasicCrudDaoImpl<T> implements BasicCrudDao<T> {
     @Override
     public void update(T entity) {
         sessionFactory.getCurrentSession().update(entity);
+    }
+
+    @Override
+    public T findByCode(String code) {
+        T entity = sessionFactory.getCurrentSession().get(daoType, code);
+        if (entity == null) {
+            throw new NoSuchElementException();
+        }
+        return entity;
     }
 }

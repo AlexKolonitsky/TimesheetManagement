@@ -42,6 +42,6 @@ public class ProjectVersion {
 
     @Override
     public int hashCode() {
-        return version != null ? version.hashCode() : 0;
+        return Objects.hash(getVersion());
     }
 }

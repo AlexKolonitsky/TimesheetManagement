@@ -97,12 +97,12 @@ public class Log {
             return false;
         }
         Log logs = (Log) object;
-        return id == logs.id &&
-                assignmentId == logs.assignmentId &&
-                Double.compare(logs.time, time) == 0 &&
-                order == logs.order &&
-                Objects.equals(comment, logs.comment) &&
-                Objects.equals(date, logs.date);
+        return id == logs.id
+                && assignmentId == logs.assignmentId
+                && Double.compare(logs.time, time) == 0
+                && order == logs.order
+                && Objects.equals(comment, logs.comment)
+                && Objects.equals(date, logs.date);
     }
 
     @Override

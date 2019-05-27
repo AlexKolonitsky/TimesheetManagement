@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Company")
+@Table(name = "Companies")
 public class Company {
 
     @Id
@@ -76,10 +76,10 @@ public class Company {
             return false;
         }
         Company company = (Company) o;
-        return Objects.equals(getId(), company.getId()) &&
-                Objects.equals(getName(), company.getName()) &&
-                Objects.equals(getLogo(), company.getLogo()) &&
-                Objects.equals(getOwnerId(), company.getOwnerId());
+        return Objects.equals(getId(), company.getId())
+                && Objects.equals(getName(), company.getName())
+                && Objects.equals(getLogo(), company.getLogo())
+                && Objects.equals(getOwnerId(), company.getOwnerId());
     }
 
     @Override
@@ -89,12 +89,12 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", logo='" + logo + '\'' +
-                ", ownerId=" + ownerId +
-                '}';
+        return "Company{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", logo='" + logo + '\''
+                + ", ownerId=" + ownerId
+                + '}';
     }
 
 }

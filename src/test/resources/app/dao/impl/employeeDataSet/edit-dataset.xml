@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+    <Employee  id="1" name="Max" phone="7654356" email="max@mail.ru" photoUrl="MaxPhotoUrl" />
+    <Employee id="2" name="Sergey" phone="5432456" email="sergey@mail.ru" photoUrl="SergeyPhotoUrl" />
+</dataset>
