@@ -17,9 +17,9 @@ import java.util.NoSuchElementException;
 public class BasicCrudDaoImpl<T> implements BasicCrudDao<T> {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    protected SessionFactory sessionFactory;
 
-    private Class<? extends T> daoType;
+    protected Class<? extends T> daoType;
 
     public BasicCrudDaoImpl() {
         Type type = getClass().getGenericSuperclass();
