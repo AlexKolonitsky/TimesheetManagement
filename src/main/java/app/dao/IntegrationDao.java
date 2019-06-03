@@ -1,6 +1,8 @@
 package app.dao;
 
-public interface IntegrationDao {
+import app.entities.Integration;
+
+public interface IntegrationDao extends BasicCrudDao<Integration> {
 
     Object findByLogin(String login);
 }

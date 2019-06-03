@@ -2,6 +2,7 @@ package app.config.beans;
 
 
 import app.dao.BasicCrudDao;
+import app.dao.IntegrationDao;
 import app.dao.impl.ActivityDaoImpl;
 import app.dao.impl.AssignmentDaoImpl;
 import app.dao.impl.CompanyDaoImpl;
@@ -25,6 +26,8 @@ import app.entities.Notification;
 import app.entities.Project;
 import app.entities.Settings;
 import app.entities.Timesheet;
+import app.security.JwtIntegrationDetailsService;
+import app.security.jwt.JwtTokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -78,7 +81,7 @@ public class DaoConfig {
     }
 
     @Bean
-    public BasicCrudDao<Integration> getIntegrationDao() {
+    public IntegrationDao getIntegrationDao() {
         return new IntegrationDaoImpl();
     }
 
@@ -90,6 +93,16 @@ public class DaoConfig {
     @Bean
     public ProjectEditPageDaoImpl getPageEditDao() {
         return new ProjectEditPageDaoImpl();
+    }
+
+    @Bean
+    public JwtTokenProvider getJwtTokenProvider() {
+        return new JwtTokenProvider();
+    }
+
+    @Bean
+    public JwtIntegrationDetailsService getJwtIntegrationService() {
+        return new JwtIntegrationDetailsService();
     }
 
 }

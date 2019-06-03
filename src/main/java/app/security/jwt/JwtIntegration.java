@@ -7,23 +7,39 @@ import java.util.Collection;
 
 public class JwtIntegration implements UserDetails {
 
-    private final Long id;
+    private final int id;
+    private final int companyId;
+    private final String type;
     private final String username;
     private final String password;
     private final boolean enabled;
-    private final Collection<? extends GrantedAuthority> authorities;
+//    private final Collection<? extends GrantedAuthority> authorities;
 
-    public JwtIntegration(Long id, String username, String password, boolean enabled, Collection<? extends GrantedAuthority> authorities) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-        this.authorities = authorities;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+//        return authorities;
+        return null;
+    }
+
+    public JwtIntegration(int id, int companyId, String type, String username, String password, boolean enabled
+//            , Collection<? extends GrantedAuthority> authorities
+    ) {
+        this.id = id;
+        this.companyId = companyId;
+        this.type = type;
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+//        this.authorities = authorities;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public String getType() {
+        return type;
     }
 
     @Override
@@ -56,7 +72,7 @@ public class JwtIntegration implements UserDetails {
         return enabled;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 }

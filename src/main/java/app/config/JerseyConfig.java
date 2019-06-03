@@ -21,5 +21,6 @@ public class JerseyConfig extends ResourceConfig {
         register(TimesheetResource.class);
         register(ProjectEditPageResources.class);
         register(IntegrationResources.class);
+        register(AuthenticationResource.class);
     }
 }

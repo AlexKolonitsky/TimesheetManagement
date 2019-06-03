@@ -1,3 +1,4 @@
+/*
 package app.filters;
 
 import org.hibernate.Session;
@@ -52,3 +53,4 @@ public class HibernateSessionRequestFilter extends OncePerRequestFilter {
     public void destroy() {
     }
 }
+*/
