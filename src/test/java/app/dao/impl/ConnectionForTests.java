@@ -34,7 +34,7 @@ public class ConnectionForTests {
 
     @Value("${jdbc.driver}")
     private String driver;
-    @Value("${db.url}")
+    @Value("${db.url}2")
     private String url;
 
     public String pathToInitialFile;
