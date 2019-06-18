@@ -157,8 +157,9 @@ public class EmployeeDaoImplTest extends ConnectionForTests {
     @Test(expected = DataIntegrityViolationException.class)
     public void saveAlreadyExistsEntity() {
         employeeDao
-                .create(new Employee(2, "Sergey", "09876123","sergey@mail.ru","SergeyPhotoUrl"));
+                .create(new Employee(1, "Max", "0000000","max@mail.ru","MaxPhotoUrl"));
     }
+
 
     @Test
     public void update() throws Exception {
