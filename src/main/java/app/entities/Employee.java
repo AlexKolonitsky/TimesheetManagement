@@ -1,12 +1,8 @@
 package app.entities;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,10 +15,6 @@ public class Employee {
     private String phone;
     private String email;
     private String photoUrl;
-
-    @ElementCollection
-    @CollectionTable(name = "Project")
-    private List<Project> projects = new LinkedList<>();
 
     public Employee() {
     }
@@ -42,7 +34,6 @@ public class Employee {
                 employee.getPhone(),
                 employee.getEmail(),
                 employee.getPhotoUrl());
-        this.projects = employee.getProjects();
     }
 
     public int getId() {
@@ -85,19 +76,8 @@ public class Employee {
         this.photoUrl = photoUrl;
     }
 
-    public List<Project> getProjects() {
-        return projects;
-    }
 
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
-    }
-
-    public void assignToProject(Project project) {
-            projects.add(project);
-    }
-
-        @Override
+    @Override
     public boolean equals(Object object) {
         if (this == object) {
             return true;
@@ -110,13 +90,12 @@ public class Employee {
                 && Objects.equals(name, employee.name)
                 && Objects.equals(phone, employee.phone)
                 && Objects.equals(email, employee.email)
-                && Objects.equals(photoUrl, employee.photoUrl)
-                && Objects.equals(projects, employee.projects);
+                && Objects.equals(photoUrl, employee.photoUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, phone, email, photoUrl, projects);
+        return Objects.hash(id, name, phone, email, photoUrl);
     }
 
     @Override
@@ -128,7 +107,6 @@ public class Employee {
                 + ", email='" + email + '\''
                 + ", email='" + photoUrl + '\''
                 + '\n'
-                + ", projects=" + projects
                 + '}';
     }
 }
