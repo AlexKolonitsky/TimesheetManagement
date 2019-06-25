@@ -119,4 +119,15 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="fix-period-columns-names-1.0" author="Yuri Dolgushev">
+        <renameColumn tableName="Periods"
+                      oldColumnName="from"
+                      newColumnName="fromDate"
+                      columnDataType="DATE"/>
+        <renameColumn tableName="Periods"
+                      oldColumnName="to"
+                      newColumnName="toDate"
+                      columnDataType="DATE"/>
+    </changeSet>
+
 </databaseChangeLog>
